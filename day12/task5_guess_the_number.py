@@ -13,34 +13,51 @@ choice = input("Choose a difficulty. Type 'easy' or 'hard':")
 number = random.randint(1, 100)
 print(number)
 
-
-
-if choice == "easy":
+def easy_model():
     choice1 = 0
     attempt = 10
     print("You have 10 attempts remaining to guess the number.")
-    while choice1 != number and attempt > 1:
+    while choice1 != number and attempt > 0:
         choice1 = int(input("Make a guess:"))
-
-        print(f"You have {attempt} attempts remaining to guess the number.")
-
         if choice1 < number:
             print("Too low.")
             attempt -= 1
+            print(f"You have {attempt} attempts remaining to guess the number.")
         elif choice1 > number:
             print("Too high.")
             attempt -= 1
+            print(f"You have {attempt} attempts remaining to guess the number.")
         else:
             print("You guessed correctly.")
+    if attempt == 0:
+        print("You've run out of guesses. Refresh the page to run again.")
+        print("\n" * 20)
 
 
-elif choice == "hard":
+
+def hard_model():
+    choice1 = 0
+    attempt = 5
     print("You have 5 attempts remaining to guess the number.")
-    if choice1 < number:
-        print("Too low.")
+    while choice1 != number and attempt > 0:
+        choice1 = int(input("Make a guess:"))
+        if choice1 < number:
+            print("Too low.")
+            attempt -= 1
+            print(f"You have {attempt} attempts remaining to guess the number.")
+        elif choice1 > number:
+            print("Too high.")
+            attempt -= 1
+            print(f"You have {attempt} attempts remaining to guess the number.")
+        else:
+            print("You guessed correctly.")
+    if attempt == 0:
+        print("You've run out of guesses. Refresh the page to run again.")
+        print("\n" * 20)
 
-
-
-
+if choice == "easy":
+    easy_model()
+elif choice == "hard":
+    hard_model()
 
 
